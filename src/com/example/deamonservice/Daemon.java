@@ -8,12 +8,13 @@ import android.util.Log;
 public class Daemon {
 
 	private static final String TAG = "com.example.daemon";
-	public static final int INTERVAL_ONE_MINUTE = 5;
+	public static final int INTERVAL_ONE_MINUTE = 5;//定义线程休眠的时间
 
 	public static void run(final Context context,final Class<?> daemonServiceClass,final int interval){
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
+				//从assets文件加载数据
 				Command.install(context, "bin", "daemon");
 				start(context, daemonServiceClass, interval);
 			}
